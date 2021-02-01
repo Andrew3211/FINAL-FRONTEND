@@ -1,0 +1,108 @@
+.leftFieldSet{
+  position: absolute;
+  width: 45%;
+  margin-top: 5%;
+  margin-right: 60%;
+  background-color: white;
+}
+.leftFieldSet div{
+  margin-top: 10%;
+}
+.rightFieldSet{
+  position: absolute;
+  width: 60%;
+  margin-left: 40%;
+}
+.pageLegend {
+  margin-left: 30%;
+}
+.leftFieldSet img{
+  width: 50%;
+  border-radius: 2%;
+  border-color: forestgreen;
+  border-width: 1px;
+  margin-top: 5%;
+  margin-left: 25%;
+}
+#pageDiv label{
+  margin-left: 20%;
+}
+.descriptionTextarea {
+  margin-left: 20%;
+  width: 60%;
+  height: 150%;
+  resize: none;
+}
+#pageDiv input{
+  width: 40%;
+  margin-left: 20%;
+}
+.pp-element{
+  margin-top: 10%;
+  margin-bottom: -5%;
+}
+#colFormControls {
+  width: 31%;
+  height: 15%;
+  margin-top: 10%;
+  margin-left: 62%;
+}
+#saveBtn {
+  width: 60%;
+  height: 15%;
+  margin-top: 10%;
+  margin-left: -2%;
+}
+#bottomDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+#leftBottomDiv{
+  width: 33%;
+}
+#centerBottomDiv{
+  width: 33%;
+}
+#rightBottomDiv{
+  width: 33%;
+}
+.iInput {
+  width: 40%;
+  margin-left: 20%;
+}
+.avNumberFields {
+  border: 2px dashed grey;
+  border-radius: 5px;
+  padding:0 1%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 60%;
+  margin: 5% 10%;
+}
+.cFInput {
+  width: 100%;
+  margin: 2% 5% 2% 5%;
+}
+.itemLabel {
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-bottom: -5%;
+}
+.centerFieldset {
+  margin-left: 33%;
+  margin-right: 33%;
+}
+#bottomDivControls {
+  margin-top: 55%;
+  margin-left: 7%;
+  width: 90%;
+  height: 10%;
+}
+#bottomDivControls button {
+  margin: 0 5%;
+  width: 28%;
+}

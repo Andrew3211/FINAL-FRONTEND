@@ -1,0 +1,41 @@
+<div id="adminPanelDiv">
+  <div id="userTableDiv">
+    <table #userTable class="table table-hover" id="userTable">
+      <thead>
+      <tr class="userTableHead">
+        <th scope="col"></th>
+        <th scope="col" onclick="sortTable('userTable',1)">Username</th>
+        <th scope="col" onclick="sortTable('userTable',2)">Password</th>
+        <th scope="col" onclick="sortTable('userTable',3)">Email</th>
+        <th scope="col" onclick="sortTable('userTable',4)">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let lUser of loadedUserList" class="table-secondary">
+        <th scope="row">
+          <input class="align-elements" style="margin-top: 2px; margin-left: 10px" type="radio" id="radioInput{{lUser.userID}}" name="tableRadio" value="" (click)="adminService.adminTempUser = lUser">
+        </th>
+        <td>
+          <input type="text" [disabled]="!(adminService.adminTempUser == lUser)" class="form-control" [(ngModel)]="lUser.username"  name="username" id="userNameInput{{lUser.userID}}">
+        </td>
+        <td>
+          <input type="text" [disabled]="!(adminService.adminTempUser == lUser)" class="form-control" [(ngModel)]="lUser.password"  name="password" id="passwordInput{{lUser.userID}}">
+        </td>
+        <td>
+          <input type="text" [disabled]="!(adminService.adminTempUser == lUser)" class="form-control" [(ngModel)]="lUser.email"  name="email" id="emailInput{{lUser.userID}}">
+        </td>
+        <td>
+          <select #roleSelector class="form-control" [disabled]="!(adminService.adminTempUser == lUser)" id="userRoleSelector{{lUser.userID}}" [(ngModel)]="lUser.role">
+            <option [selected]="lUser.role.match('USER')" value="USER">User</option>
+            <option [selected]="lUser.role.match('ADMIN')" value="ADMIN">Admin</option>
+          </select>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="adminControls" *ngIf="!(this.adminService.adminTempUser == null)">
+    <button  type="button" class="btn btn-outline-primary admin-controls" (click)="deleteUser()">Delete</button>
+    <button type="button" class="btn btn-outline-success admin-controls" (click)="saveEditableUser()">Save</button>
+  </div>
+</div>

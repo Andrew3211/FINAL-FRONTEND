@@ -1,0 +1,175 @@
+<form>
+  <div id="pageDiv" #pageDiv [hidden]="pageMark">
+    <fieldset class="leftFieldSet">
+      <legend class="pageLegend">Creating a new collection</legend>
+      <div style="width: 50%; height: 50%">
+        <app-uploader></app-uploader>
+      </div>
+    </fieldset>
+    <fieldset class="rightFieldSet">
+      <div class="form-group pp-element" style="margin-top: 5%">
+        <label for="inputName">Name of the collection:</label>
+        <input #colNameInput type="text" class="form-control" id="inputName" [(ngModel)]="collection.name" name="colName">
+      </div>
+      <div class="form-group pp-element" style="width: 40%; margin-left: 20%">
+        <label for="themeSelector" style="margin-left: 0%">Theme:</label>
+        <select #themeSelector class="form-control" id="themeSelector" name="theme" >
+          <option selected value="books">Books</option>
+          <option value="weapons">Weapons</option>
+          <option value="coins">Coins</option>
+          <option value="shells">Shells</option>
+          <option value="stones">Stones</option>
+          <option value="tickets">Tickets</option>
+          <option value="stickers">Stickers</option>
+          <option value="buttons">Buttons</option>
+        </select>
+      </div>
+      <div class="form-group pp-element">
+        <label for="descriptionTextarea">Description:</label>
+        <textarea class="form-control descriptionTextarea" id="descriptionTextarea"  [(ngModel)]="collection.description" rows="8" name="description"></textarea>
+      </div>
+      <div id="colFormControls">
+        <button type="button" id="saveBtn" class="btn btn-outline-info" (click)="changePageView()">Set item fields</button>
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="bottomDiv" #bottomDiv [hidden]="!(pageMark)">
+    <div id="leftBottomDiv">
+      <label for="avNumberField" class="itemLabel"><h5>Number fields:</h5></label>
+      <div class="avNumberFields" id="avNumberField">
+        <button type="button" class="btn btn-secondary" (click)="cFNInput.disabled=!(cFNInput.disabled)">+</button>
+        <div class="cFInput">
+          <input
+            #cFNInput type="text" disabled class="textInputItem form-control"
+            id="inputFirstNField" placeholder="First number field" name="firstNumField"
+            [(ngModel)]="customItemFields.firstNumField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cSNInput.disabled=!(cSNInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cSNInput type="text" disabled class="textInputItem form-control"
+           id="inputSecondNField" placeholder="Second number field" name="secondNumField"
+           [(ngModel)]="customItemFields.secondNumField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cTNInput.disabled=!(cTNInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cTNInput type="text" disabled class="textInputItem form-control"
+           id="inputThirdNField" placeholder="Third number field" name="thirdNumField"
+           [(ngModel)]="customItemFields.thirdNumField">
+        </div>
+      </div>
+      <label for="avNumberFields" class="itemLabel"><h5>String fields:</h5></label>
+      <div class="avNumberFields" id="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cFSInput.disabled=!(cFSInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cFSInput type="text" disabled class="textInputItem form-control"
+           id="inputFirstSField" placeholder="First string field" name="firstStrField"
+           [(ngModel)]="customItemFields.firstStrField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cSSInput.disabled=!(cSSInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cSSInput type="text" disabled class="textInputItem form-control"
+           id="inputSecondSField" placeholder="Second string field" name="secondStrField"
+           [(ngModel)]="customItemFields.secondStrField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cTSInput.disabled=!(cTSInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cTSInput type="text" disabled class="textInputItem form-control"
+           id="inputThirdSField" placeholder="Third string field" name="thirdStrField" [(ngModel)]="customItemFields.thirdStrField">
+        </div>
+      </div>
+    </div>
+    <div id="centerBottomDiv">
+      <label for="avDateField" class="itemLabel"><h5>Date fields:</h5></label>
+      <div class="avNumberFields" id="avDateField">
+        <button type="button" class="btn btn-secondary" (click)="cFDInput.disabled=!(cFDInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cFDInput type="text" disabled class="textInputItem form-control"
+           placeholder="First date field" name="firstDateField"
+           [(ngModel)]="customItemFields.firstDateField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cSDInput.disabled=!(cSDInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cSDInput type="text" disabled class="textInputItem form-control"
+           placeholder="Second date field" name="secondDateField"
+           [(ngModel)]="customItemFields.secondDateField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cTDInput.disabled=!(cTDInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cTDInput type="text" disabled class="textInputItem form-control"
+           placeholder="Third date field" name="thirdDateField"
+           [(ngModel)]="customItemFields.thirdDateField">
+        </div>
+      </div>
+
+      <label for="avBoolField" class="itemLabel"><h5>Boolean fields:</h5></label>
+      <div class="avNumberFields" id="avBoolField">
+        <button type="button" class="btn btn-secondary" (click)="cFBInput.disabled=!(cFBInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cFBInput type="text" disabled class="textInputItem form-control"
+           id="inputFirstBField" placeholder="First boolean field" name="firstBoolField"
+           [(ngModel)]="customItemFields.firstBoolField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cSBInput.disabled=!(cSBInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cSBInput type="text" disabled class="textInputItem form-control"
+           id="inputSecondBField" placeholder="Second boolean field" name="secondBoolField"
+           [(ngModel)]="customItemFields.secondBoolField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cTBInput.disabled=!(cTBInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cTBInput type="text" disabled class="textInputItem form-control"
+           id="inputThirdBField" placeholder="Third boolean field" name="thirdBoolField"
+           [(ngModel)]="customItemFields.thirdBoolField">
+        </div>
+      </div>
+    </div>
+    <div id="rightBottomDiv">
+      <label for="avTextField" class="itemLabel"><h5>Text fields:</h5></label>
+      <div class="avNumberFields" id="avTextField">
+        <button type="button" class="btn btn-secondary" (click)="cFTInput.disabled=!(cFTInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cFTInput type="text" disabled class="textInputItem form-control"
+           id="inputFirstTField" placeholder="First text field" name="firstTextField"
+           [(ngModel)]="customItemFields.firstTextField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cSTInput.disabled=!(cSTInput.disabled)">+</button>
+        <div class="cFInput">
+          <input #cSTInput type="text" disabled class="textInputItem form-control"
+           id="inputSecondTField" placeholder="Second text field" name="secondTextField"
+           [(ngModel)]="customItemFields.secondTextField">
+        </div>
+      </div>
+      <div class="avNumberFields">
+        <button type="button" class="btn btn-secondary" (click)="cTTInput.disabled=!(cTTInput.disabled)" >+</button>
+        <div class="cFInput">
+          <input #cTTInput type="text" disabled class="textInputItem form-control"
+           id="inputThirdTField" placeholder="Third text field" name="thirdTextField"
+           [(ngModel)]="customItemFields.thirdTextField">
+        </div>
+      </div>
+      <div id="bottomDivControls">
+        <button type="button" id="goBackBtn" class="btn btn-outline-info" (click)="changePageView()">Return</button>
+        <button [disabled]="((themeSelector.value || colNameInput.value)==null)" type="submit" id="saveColBtn" class="btn btn-outline-success" (click)="saveNewCollection()">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

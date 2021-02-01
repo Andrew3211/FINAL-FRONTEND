@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLinkActive="active"  [routerLink]="['/']">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/collection-page']" *ngIf="this.appService.curUser != null">My collections<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/create-collection-page']" *ngIf="this.appService.curUser != null">Create collection</a>
+      </li>
+    </ul>
+
+    <div *ngIf="appService.curUser" id="userInfo">
+      <div class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <b>{{appService.curUser.username}}</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/personal-page']">My account</a>
+          <a class="dropdown-item" [routerLink]="['/admin-panel-page']" *ngIf="this.appService.curUser.role.match('ADMIN')">Admin panel</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="user-bar">
+      <button class="btn btn-outlin my-2 my-sm-0" *ngIf="!(appService.isLogin)" (click)="openModal(loginTemplate)">Login</button>
+      <button *ngIf="appService.isLogin" class="btn btn-outlin my-2 my-sm-0" (click)="appService.logout()">Logout</button>
+    </div>
+
+
+  </div>
+</nav>
+
+<ng-template #loginTemplate>
+  <div class="modal-header" id="mainLoginDiv">
+    <h4 class="modal-title pull-left" style="margin-left: 45%">Login</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="errorMsg" class="alert alert-dismissible alert-primary modal-error-div">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{errorMsg}}!</strong>
+  </div>
+  <div class="modal-body" [formGroup]="authForm">
+    <input class="form-control mr-sm-2" type="text" placeholder="Username" formControlName="username">
+    <br>
+    <input class="form-control mr-sm-2" type="text" placeholder="Password" formControlName="password">
+    <br><br>
+    <button #authFormBtn class="btn btn-outline-success my-2 my-sm-0" id="submitBtn" type="submit" [disabled]="authForm.invalid" (click)="authUser()">Enter</button>
+  </div>
+  <hr>
+  <div id="regWays">
+  <button class="btn btn-outline-info my-2 my-sm-0 regBtn" (click)="modalRef.hide(); openModal(regTemplate) ">Registration</button>
+  </div>
+</ng-template>
+
+<ng-template #regTemplate>
+  <div class="modal-header" id="regTemp">
+    <h4 class="modal-title pull-left" style="">Registration</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form>
+    <div [formGroup]="regForm">
+      <div class="modal-body reg-modal-div">
+        <input class="form-control mr-sm-2" type="text" placeholder="Username" formControlName="username">
+        <br>
+        <input class="form-control mr-sm-2" type="email" placeholder="Email" formControlName="email">
+        <br>
+        <input class="form-control mr-sm-2" type="password" placeholder="Password" formControlName="password">
+      </div>
+    </div>
+  </form>
+  <button #regFormBtn class="btn btn-outline-info my-2 my-sm-0 regBtn" type="submit" [disabled]="regForm.invalid" (click)="modalRef.hide(); registrantUser()" style="width: 60%; margin-left: 20%">Enter</button>
+  <hr>
+</ng-template>
+<router-outlet></router-outlet>

@@ -1,0 +1,115 @@
+<div id="pageDiv">
+  <h4 id="pageLabel">Creating a new item</h4>
+  <div class="form-group" id="itemName">
+    <label for="inputName">Name:</label>
+    <input type="text" class="form-control" id="inputName" [(ngModel)]="collectionService.tmpItem.itemName" name="itemName">
+  </div>
+  <div id="saveBtnDiv">
+    <button type="button" class="btn btn-outline-success" (click)="saveItem()">Save item</button>
+  </div>
+  <div id="customFieldsTable">
+    <table class="table table-light" >
+      <tbody>
+      <tr class="table-secondary" >
+        <td>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[0][0]">
+            <label for="firstNumField">{{collectionService.tmpCustomItemFields.firstNumField}}:</label>
+            <input id="firstNumField" type="number" class="form-control" [(ngModel)]="collectionService.tmpItem.firstNumField">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[0][1]">
+            <label for="secondNumField">{{collectionService.tmpCustomItemFields.secondNumField}}:</label>
+            <input id="secondNumField" type="number" class="form-control" [(ngModel)]="collectionService.tmpItem.secondNumField">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[0][2]">
+            <label for="thirdNumField">{{collectionService.tmpCustomItemFields.thirdNumField}}:</label>
+            <input id="thirdNumField" type="number" class="form-control" [(ngModel)]="collectionService.tmpItem.thirdNumField">
+          </div>
+
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[1][0]">
+            <label for="firstStrField">{{collectionService.tmpCustomItemFields.firstStrField}}:</label>
+            <input id="firstStrField" type="text" class="form-control" [(ngModel)]="collectionService.tmpItem.firstStrField">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[1][1]">
+            <label for="secondStrField">{{collectionService.tmpCustomItemFields.secondStrField}}:</label>
+            <input id="secondStrField" type="text" class="form-control" [(ngModel)]="collectionService.tmpItem.secondStrField">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[1][2]">
+            <label for="thirdStrField">{{collectionService.tmpCustomItemFields.thirdStrField}}:</label>
+            <input id="thirdStrField" type="text" class="form-control" [(ngModel)]="collectionService.tmpItem.thirdStrField">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[3][0]">
+            <label for="firstBoolFieldSelector">{{collectionService.tmpCustomItemFields.firstBoolField}}:</label>
+            <select #firstBoolFieldSelector class="form-control" id="firstBoolFieldSelector">
+              <option value="true">Yes</option>
+              <option selected value="false">No</option>
+            </select>
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[3][1]">
+            <label for="secondBoolFieldSelector">{{collectionService.tmpCustomItemFields.secondBoolField}}:</label>
+            <select #secondBoolFieldSelector class="form-control" id="secondBoolFieldSelector">
+              <option value="true">Yes</option>
+              <option selected value="false">No</option>
+            </select>
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[3][2]">
+            <label for="thirdBoolFieldSelector">{{collectionService.tmpCustomItemFields.thirdBoolField}}:</label>
+            <select #thirdBoolFieldSelector class="form-control" id="thirdBoolFieldSelector">
+              <option value="true">Yes</option>
+              <option selected value="false">No</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="customFieldsTableTwo">
+    <table class="table table-light" >
+      <tbody>
+      <tr class="table-secondary">
+        <td>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[2][0]">
+            <label for="firstDateField">{{collectionService.tmpCustomItemFields.firstDateField}}:</label>
+            <input #firstDateField id="firstDateField" type="date" class="form-control" (input)="this.collectionService.tmpItem.firstDateField = firstDateField.value">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[2][1]">
+            <label for="secondDateField">{{collectionService.tmpCustomItemFields.secondDateField}}:</label>
+            <input #secondDateField id="secondDateField" type="date" class="form-control" (input)="this.collectionService.tmpItem.secondDateField = secondDateField.value">
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[2][2]">
+            <label for="thirdDateField">{{collectionService.tmpCustomItemFields.thirdDateField}}:</label>
+            <input #thirdDateField id="thirdDateField" type="date" class="form-control" (input)="this.collectionService.tmpItem.thirdDateField = thirdDateField.value" >
+            <hr />
+          </div>
+
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[4][0]">
+            <label for="firstTextField">{{collectionService.tmpCustomItemFields.firstTextField}}:</label>
+            <textarea id="firstTextField" class="form-control" [(ngModel)]="collectionService.tmpItem.firstTextField" rows="8"></textarea>
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[4][1]">
+            <label for="secondTextField">{{collectionService.tmpCustomItemFields.secondTextField}}:</label>
+            <textarea id="secondTextField" class="form-control" [(ngModel)]="collectionService.tmpItem.secondTextField" rows="8"></textarea>
+            <hr />
+          </div>
+          <div class="form-group tableOneElements" *ngIf="collectionService.tmpCollection.usingCustomFields[4][2]">
+            <label for="thirdTextField">{{collectionService.tmpCustomItemFields.thirdTextField}}:</label>
+            <textarea id="thirdTextField" class="form-control" [(ngModel)]="collectionService.tmpItem.thirdTextField" rows="8"></textarea>
+          </div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

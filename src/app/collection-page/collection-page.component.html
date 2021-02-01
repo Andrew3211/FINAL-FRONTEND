@@ -1,0 +1,49 @@
+<div id="colPanelDiv">
+  <div id="colTableDiv">
+    <table #colTable class="table table-hover">
+      <thead>
+      <tr class="userTableHead" style="height: 100%">
+        <th scope="col"></th>
+        <th scope="col" onclick="sortTable('userTable',0)" style="width: 10%">Image</th>
+        <th scope="col" onclick="sortTable('userTable',1)" style="width: 20%">Name of the collection</th>
+        <th scope="col" onclick="sortTable('userTable',2)" style="width: 20%">Theme</th>
+        <th scope="col" onclick="sortTable('userTable',3)">Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let col of loadedColList" class="table-secondary trColPage">
+        <th>
+          <input class="align-elements" style="margin-top: 50%; margin-left: 10px" type="radio" id="radioInput{{col.collectionID}}" name="tableRadio" value="" (click)="collectionService.tmpCollection = col">
+        </th>
+        <td >
+          <img [src]="col.colImg" id="profileIcon">
+        </td>
+        <td>
+          <input type="text" [disabled]="!(collectionService.tmpCollection == col)" class="form-control" [(ngModel)]="col.name" id="colNameInput{{col.collectionID}}">
+        </td>
+        <td>
+          <select #themeSelector class="form-control" id="colThemeSelector{{col.collectionID}}" [disabled]="!(collectionService.tmpCollection == col)">
+            <option [selected]="col.theme.match('books')" value="books">Books</option>
+            <option [selected]="col.theme.match('weapons')" value="weapons">Weapons</option>
+            <option [selected]="col.theme.match('coins')" value="coins">Coins</option>
+            <option [selected]="col.theme.match('shells')" value="shells">Shells</option>
+            <option [selected]="col.theme.match('stones')" value="stones">Stones</option>
+            <option [selected]="col.theme.match('tickets')" value="tickets">Tickets</option>
+            <option [selected]="col.theme.match('stickers')" value="stickers">Stickers</option>
+            <option [selected]="col.theme.match('buttons')" value="buttons">Buttons</option>
+          </select>
+        </td>
+        <td>
+          <textarea class="form-control" [disabled]="!(collectionService.tmpCollection == col)" [(ngModel)]="col.description" rows="4" id="colDescriptionInput{{col.collectionID}}"></textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="collectionControls" *ngIf="!(this.collectionService.tmpCollection == null)">
+    <button type="button" class="btn btn-outline-success admin-controls" (click)="showCollectionItems()">Show items</button>
+    <button type="button" class="btn btn-outline-success admin-controls" (click)="addItemToCollection()">Add item</button>
+    <button  type="button" class="btn btn-outline-primary admin-controls" (click)="deleteCollection()">Delete</button>
+    <button type="button" class="btn btn-outline-success admin-controls" (click)="saveCollection()">Save</button>
+  </div>
+</div>

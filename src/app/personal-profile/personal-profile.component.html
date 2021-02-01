@@ -1,0 +1,66 @@
+<form>
+  <fieldset id="leftFieldSet">
+    <div id="imgDiv">
+      <img [src]="this.imgURL == null ? 'assets/img/profile_avatar.svg': this.imgURL"  id="profileIcon">
+    </div>
+    <div class="form-group" id="fileLoader">
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input #fileLoaderInput type="file" class="custom-file-input" id="inputFile" (change)="handleFileInput(fileLoaderInput.files)" accept=".jpg, .jpeg, .png" [disabled]="isInputDisabled">
+          <label class="custom-file-label" for="inputFile">Choose file</label>
+        </div>
+        <div class="uploadDiv" hidden>
+          <br>
+          <div *ngIf="fileToUpload != null">
+            <app-upload-task [file]="fileToUpload"></app-upload-task>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset id="rightFieldSet">
+    <div id="userDiv">
+      <legend style="margin-left: 19%; width: 30%">Account information</legend>
+      <div class="form-group pp-element">
+        <label for="inputUsername">Username:</label>
+        <input type="text" [disabled]="isInputDisabled" class="form-control" id="inputUsername" [(ngModel)]="appService.curUser.username" name="username">
+      </div>
+      <div class="form-group pp-element">
+        <label for="inputEmail">Email address:</label>
+        <input type="email" [disabled]="isInputDisabled" class="form-control" id="inputEmail" [(ngModel)]="appService.curUser.email" name="email">
+      </div>
+      <div class="form-group pp-element">
+        <label for="inputPassword">Password:</label>
+        <input type="password" [disabled]="isInputDisabled" class="form-control" id="inputPassword" [(ngModel)]="appService.curUser.password" name="password">
+        <div id="inputPasswordCheckbox">
+          <input type="checkbox" onclick="changeInputPasswordType()">
+          <small>Show pass</small>
+        </div>
+      </div>
+    </div>
+    <div id="userDataDiv">
+      <div class="form-group pp-element">
+        <label for="inputFullName">Full name:</label>
+        <input type="text" [disabled]="isInputDisabled" class="form-control" id="inputFullName" [(ngModel)]="appService.curUserData.fullname" name="fullname">
+      </div>
+      <div class="form-group pp-element">
+        <label for="inputDOB">Date of birth: </label>
+        <input #dobInput type="date" [disabled]="isInputDisabled" class="form-control" id="inputDOB" [value]="appService.curUserData.dob" (input)="this.appService.curUser.userData.dob = dobInput.value" name="dob">
+      </div>
+      <div class="form-group pp-element" style="width: 60%; margin-left: 20%">
+        <label for="sexSelector" style="margin-left: 0%">Gender:</label>
+        <select #sexInput class="form-control" id="sexSelector" [disabled]="isInputDisabled">
+          <option [selected]="appService.curUserData.sex" value="true">Male</option>
+          <option [selected]="!(appService.curUserData.sex)" value="false">Female</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <div id="editDataGroup">
+    <button type="button" id="saveBtn" class="btn btn-outline-info" [hidden]="isInputDisabled" (click)="saveNewValues()">Save</button>
+    <button type="button" id="editBtn" class="btn btn-outline-secondary" (click)="isInputDisabled = !isInputDisabled">Change info</button>
+  </div>
+</form>
+

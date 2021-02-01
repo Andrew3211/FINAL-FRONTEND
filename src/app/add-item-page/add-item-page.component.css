@@ -1,0 +1,70 @@
+#pageDiv {
+  position: absolute !important;
+  margin-top: 0%;
+  margin-left: 0%;
+  width: 100%;
+  height: 90%;
+ }
+#dropDiv {
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 2%;
+  width: 40%;
+  height: 15%;
+}
+#customFieldsTable {
+   position: absolute;
+   width: 24%;
+   height: 90%;
+   margin-left: 47%;
+   margin-top: -33%;
+   border: 2px dashed grey;
+   border-radius: 5px;
+   overflow:auto;
+ }
+#customFieldsTableTwo {
+  position: absolute;
+  width: 24%;
+  height: 90%;
+  margin-left: 74%;
+  margin-top: -33%;
+  border: 2px dashed grey;
+  border-radius: 5px;
+  overflow:auto;
+}
+#customFieldsTableTwo textarea{
+  resize: none;
+}
+.tableOneElements input{
+  margin-left: 2%;
+  width: 97%;
+}
+.tableOneElements label{
+  margin-left: 2%;
+}
+
+.tableTwoElements input{
+  margin-left: 2%;
+}
+.tableTwoElements {
+
+}
+.tableTwoElements label{
+  margin-left: 2%;
+}
+#itemName {
+  width: 19%;
+  margin-left: 25%;
+  margin-top: 30%;
+}
+#saveBtnDiv {
+  position: absolute;
+  width: 8%;
+  margin-left: 37.5%;
+  margin-top: 2%;
+}
+#pageLabel {
+  position: absolute;
+  margin-left: 4%;
+  margin-top: 0.5%;
+}

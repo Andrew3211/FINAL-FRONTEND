@@ -1,0 +1,48 @@
+#adminPanelDiv {
+  position: absolute;
+  width: 100%;
+  height: 92%;
+}
+#userTableDiv {
+  width: 90%;
+  height: 80%;
+  margin-left: 5%;
+  margin-top: 2%;
+  border: 2px dashed grey;
+  border-radius: 5px;
+  overflow:auto;
+}
+.userTableHead th{
+  text-align: center !important;
+  cursor: pointer;
+}
+#userIDSelector {
+ width: 20%;
+}
+#userActiveSelector {
+  width: 40%;
+  margin-left: 30%;
+}
+#userRoleSelector {
+  width: 86%;
+  margin-left: 7%;
+}
+#userLastOnlineDateSelector {
+  width: 90%;
+  margin-left: 5%;
+}
+#adminControls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 13%;
+  height: 6%;
+  margin-left: 83%;
+  margin-top: 2%;
+}
+.align-elements {
+  margin-top: 40% !important;
+}
+.admin-controls {
+  margin: 0 8%;
+}

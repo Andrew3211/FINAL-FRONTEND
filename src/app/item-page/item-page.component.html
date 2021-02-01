@@ -1,0 +1,100 @@
+<div id="itemPanelDiv">
+  <div id="itemTableDiv">
+    <table #itemTable class="table table-hover">
+      <thead>
+      <tr class="userTableHead" style="height: 100%" id="tableHeadTr">
+        <th scope="col"></th>
+        <th scope="col" onclick="sortTable('userTable',1)">Name</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[0][0]">{{collectionService.tmpCustomItemFields.firstNumField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[0][1]">{{collectionService.tmpCustomItemFields.secondNumField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[0][2]">{{collectionService.tmpCustomItemFields.thirdNumField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[1][0]">{{collectionService.tmpCustomItemFields.firstStrField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[1][1]">{{collectionService.tmpCustomItemFields.secondStrField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[1][2]">{{collectionService.tmpCustomItemFields.thirdStrField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[2][0]">{{collectionService.tmpCustomItemFields.firstDateField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[2][1]">{{collectionService.tmpCustomItemFields.secondDateField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[2][2]">{{collectionService.tmpCustomItemFields.thirdDateField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[3][0]">{{collectionService.tmpCustomItemFields.firstBoolField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[3][1]">{{collectionService.tmpCustomItemFields.secondBoolField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[3][2]">{{collectionService.tmpCustomItemFields.thirdBoolField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[4][0]">{{collectionService.tmpCustomItemFields.firstTextField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[4][1]">{{collectionService.tmpCustomItemFields.secondTextField}}</th>
+        <th scope="col" onclick="sortTable('userTable',2)" *ngIf="collectionService.tmpCollection.usingCustomFields[4][2]">{{collectionService.tmpCustomItemFields.thirdTextField}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of loadedItemList" class="table-secondary trItemPage">
+        <th>
+          <input class="align-elements" style="margin-top: 50%; margin-left: 10px" type="radio" id="radioInput{{item.itemID}}" name="tableRadio" value="" (click)="collectionService.tmpItem = item">
+        </th>
+        <td class="table-body-td">
+          <input type="text" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.itemName" id="itemNameInput{{item.itemID}}">
+        </td>
+
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[0][0]" class="table-body-td">
+          <input type="number" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.firstNumField" id="itemFirstNumFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[0][1]" class="table-body-td">
+          <input type="number" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.secondNumField" id="itemSecondNumFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[0][2]" class="table-body-td">
+          <input type="number" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.thirdNumField" id="itemThirdNumFieldInput{{item.itemID}}">
+        </td>
+
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[1][0]"class="table-body-td">
+          <input type="text" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.firstStrField" id="itemFirstStrFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[1][1]" class="table-body-td">
+          <input type="text" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.secondStrField" id="itemSecondStrFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[1][2]" class="table-body-td">
+          <input type="text" [disabled]="!(collectionService.tmpItem == item)" class="form-control" [(ngModel)]="item.thirdStrField" id="itemThirdStrFieldInput{{item.itemID}}">
+        </td>
+
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[2][0]" class="table-body-td">
+          <input #firstDateField type="date" class="form-control" (input)="this.collectionService.tmpItem.firstDateField = firstDateField.value" [disabled]="!(collectionService.tmpItem == item)" [value]="item.firstDateField" id="firstDateFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[2][1]" class="table-body-td">
+          <input #secondDateField type="date" class="form-control" (input)="this.collectionService.tmpItem.secondDateField = secondDateField.value" [disabled]="!(collectionService.tmpItem == item)" [value]="item.secondDateField" id="secondDateFieldInput{{item.itemID}}">
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[2][2]" class="table-body-td">
+          <input #thirdDateField type="date" class="form-control" (input)="this.collectionService.tmpItem.thirdDateField = thirdDateField.value" [disabled]="!(collectionService.tmpItem == item)" [value]="item.thirdDateField" id="thirdDateFieldInput{{item.itemID}}">
+        </td>
+
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[3][0]" class="table-body-td">
+          <select #firstBoolFieldSelector class="form-control" [disabled]="!(collectionService.tmpItem == item)" id="firstBoolFieldSelector{{item.itemID}}">
+            <option [selected]="item.firstBoolField == true" value="true">Yes</option>
+            <option [selected]="item.firstBoolField == true" value="false">No</option>
+          </select>
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[3][1]" class="table-body-td">
+          <select #secondBoolFieldSelector class="form-control" [disabled]="!(collectionService.tmpItem == item)" id="secondBoolFieldSelector{{item.itemID}}">
+            <option [selected]="item.secondBoolField == true" value="true">Yes</option>
+            <option [selected]="item.secondBoolField == false" value="false">No</option>
+          </select>
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[3][2]" class="table-body-td">
+          <select #thirdBoolFieldSelector class="form-control" [disabled]="!(collectionService.tmpItem == item)" id="thirdBoolFieldSelector{{item.itemID}}">
+            <option [selected]="item.thirdBoolField == true" value="true">Yes</option>
+            <option [selected]="item.thirdBoolField == false" value="false">No</option>
+          </select>
+        </td>
+
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[4][0]" class="table-body-td">
+          <textarea class="form-control" [disabled]="!(collectionService.tmpItem == item)" [(ngModel)]="item.firstTextField" rows="4" id="itemFirstTextFieldInput{{item.itemID}}"></textarea>
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[4][1]" class="table-body-td">
+          <textarea class="form-control" [disabled]="!(collectionService.tmpItem == item)" [(ngModel)]="item.secondTextField" rows="4" id="itemSecondTextFieldInput{{item.itemID}}"></textarea>
+        </td>
+        <td *ngIf="collectionService.tmpCollection.usingCustomFields[4][2]" class="table-body-td">
+          <textarea class="form-control" [disabled]="!(collectionService.tmpItem == item)" [(ngModel)]="item.thirdTextField" rows="4" id="itemThirdTextFieldInput{{item.itemID}}"></textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="itemControls" *ngIf="!(this.collectionService.tmpItem == null)">
+    <button  type="button" class="btn btn-outline-primary admin-controls" (click)="deleteItem()">Delete</button>
+    <button type="button" class="btn btn-outline-success admin-controls" (click)="saveItem()">Save</button>
+  </div>
+</div>

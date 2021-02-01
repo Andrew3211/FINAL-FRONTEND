@@ -1,0 +1,32 @@
+body {
+  height: 100%;
+}
+#submitBtn{
+  width: 48%;
+  margin-left: 26%;
+}
+#regWays {
+  width: 90%;
+  margin-left: 19%;
+  margin-bottom: 6%;
+}
+#regWays button{
+  height: 60%;
+  width: 70%;
+}
+#regTemp h4 {
+  margin-left: 38%
+}
+#regTemp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.reg-modal-div input{
+  width: 80% !important;
+  margin-left: 10%;
+}
+.regBtn button{
+  width: 60% !important;
+  margin-left: 20%;
+}

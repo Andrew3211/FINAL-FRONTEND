@@ -1,0 +1,6 @@
+<div id="uploadTaskDiv" *ngIf="snapshot | async as snap" class="dropZoneImg">
+  <div *ngIf="this.appService.collectionDownloadUrl as url">
+    <img [src]="url"><br>
+    <p>{{ snap.bytesTransferred }} of {{ snap.totalBytes }}</p>
+  </div>
+</div>
